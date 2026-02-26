@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClearView — Window Installation</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --deep: #0d1f2d;
+      --glass: rgba(255, 255, 255, 0.12);
+      --sky: #7ec8e3;
+      --gold: #c9a96e;
+      --mid: #2c4a5a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: linear-gradient(to bottom, rgba(13, 31, 45, 0.95), transparent);
+      backdrop-filter: blur(4px);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+    }
+
+    .logo span {
+      color: var(--sky);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: rgba(245, 240, 232, 0.7);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav ul a:hover {
+      color: var(--sky);
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--deep) !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      color: var(--deep);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--sky);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--sky);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.65);
+      max-width: 440px;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.9s ease 0.15s both;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--deep);
+      padding: 1rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #d4b882;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      padding: 1rem 2.2rem;
+      border: 1px solid rgba(245, 240, 232, 0.3);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sky);
+      color: var(--sky);
+    }
+
+    /* HERO RIGHT - Window Visual */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease both;
+    }
+
+    .window-frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 380px;
+      height: 520px;
+    }
+
+    .outer-frame {
+      width: 100%;
+      height: 100%;
+      border: 12px solid var(--gold);
+      position: relative;
+      box-shadow: 0 0 80px rgba(126, 200, 227, 0.15), inset 0 0 40px rgba(126, 200, 227, 0.05);
+    }
+
+    .pane-grid {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      background: var(--gold);
+    }
+
+    .pane {
+      background: linear-gradient(135deg,
+          rgba(126, 200, 227, 0.35) 0%,
+          rgba(126, 200, 227, 0.1) 30%,
+          rgba(255, 255, 255, 0.2) 50%,
+          rgba(126, 200, 227, 0.15) 100%);
+      position: relative;
+      overflow: hidden;
+      animation: shimmer 4s ease-in-out infinite alternate;
+    }
+
+    .pane::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+      transform: rotate(15deg);
+      animation: glint 6s ease-in-out infinite;
+    }
+
+    .pane:nth-child(2)::after {
+      animation-delay: 1.5s;
+    }
+
+    .pane:nth-child(3)::after {
+      animation-delay: 3s;
+    }
+
+    .pane:nth-child(4)::after {
+      animation-delay: 4.5s;
+    }
+
+    .window-sill {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      right: -24px;
+      height: 24px;
+      background: var(--gold);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Floating stats */
+    .stat-badge {
+      position: absolute;
+      background: rgba(13, 31, 45, 0.9);
+      border: 1px solid rgba(126, 200, 227, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 1rem 1.4rem;
+      border-radius: 4px;
+    }
+
+    .stat-badge .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--sky);
+    }
+
+    .stat-badge .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    .badge-1 {
+      top: 15%;
+      right: 5%;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .badge-2 {
+      bottom: 20%;
+      left: 5%;
+      animation: float 4s ease-in-out 2s infinite;
+    }
+
+    /* Background texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 80% 50%, rgba(44, 74, 90, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(126, 200, 227, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--mid);
+      padding: 3rem 8rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      border-top: 1px solid rgba(126, 200, 227, 0.15);
+      border-bottom: 1px solid rgba(126, 200, 227, 0.15);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item .big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--sky);
+      line-height: 1;
+    }
+
+    .stat-item p {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.55);
+      margin-top: 0.5rem;
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 8rem;
+      background: linear-gradient(180deg, var(--deep) 0%, #0a1920 100%);
+    }
+
+    .section-header {
+      margin-bottom: 5rem;
+    }
+
+    .section-header .eyebrow {
+      justify-content: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 900;
+      max-width: 500px;
+    }
+
+    .section-header h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(126, 200, 227, 0.1);
+    }
+
+    .service-card {
+      background: #0d1f2d;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      background: #142534;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.5s ease;
+    }
+
+    .service-card:hover::before {
+      height: 100%;
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    .service-num {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(126, 200, 227, 0.06);
+      pointer-events: none;
+    }
+
+    /* PROCESS */
+    .process {
+      padding: 8rem;
+      background: var(--mid);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .step {
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      top: 1.5rem;
+      right: -1rem;
+      color: var(--gold);
+      font-size: 1.2rem;
+      transform: translateX(50%);
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      border-radius: 2px;
+    }
+
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(245, 240, 232, 0.6);
+    }
+
+    /* WHY US */
+    .why {
+      padding: 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      background: var(--deep);
+    }
+
+    .why-visual {
+      position: relative;
+      height: 500px;
+    }
+
+    .why-window {
+      position: absolute;
+      border: 6px solid var(--gold);
+    }
+
+    .ww1 {
+      width: 260px;
+      height: 360px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(126, 200, 227, 0.2), rgba(126, 200, 227, 0.05));
+    }
+
+    .ww2 {
+      width: 180px;
+      height: 240px;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(135deg, rgba(201, 169, 110, 0.2), rgba(201, 169, 110, 0.05));
+      border-color: var(--sky);
+    }
+
+    .ww3 {
+      width: 120px;
+      height: 160px;
+      top: 50%;
+      right: 15%;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, rgba(245, 240, 232, 0.1), rgba(245, 240, 232, 0.02));
+      border-width: 4px;
+    }
+
+    .overlap-badge {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--deep);
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 10px 40px rgba(201, 169, 110, 0.4);
+    }
+
+    .why-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 2rem;
+    }
+
+    .why-content h2 em {
+      font-style: italic;
+      color: var(--sky);
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      background: rgba(126, 200, 227, 0.15);
+      border: 1px solid var(--sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--sky);
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+
+    .feature-list li strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-list li span {
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.55);
+      line-height: 1.7;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 8rem;
+      background: #07141d;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .testimonial {
+      background: rgba(44, 74, 90, 0.3);
+      border: 1px solid rgba(126, 200, 227, 0.1);
+      padding: 2.5rem;
+      border-radius: 2px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .testimonial:hover {
+      border-color: rgba(126, 200, 227, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      font-style: italic;
+      color: rgba(245, 240, 232, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--deep);
+    }
+
+    .reviewer-info strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .reviewer-info small {
+      color: rgba(245, 240, 232, 0.45);
+      font-size: 0.78rem;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 8rem;
+      background: linear-gradient(135deg, var(--mid) 0%, #0d1f2d 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(126, 200, 227, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-section p {
+      font-size: 1.05rem;
+      color: rgba(245, 240, 232, 0.6);
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-form input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(245, 240, 232, 0.2);
+      color: var(--cream);
+      padding: 1rem 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .cta-form input::placeholder {
+      color: rgba(245, 240, 232, 0.35);
+    }
+
+    .cta-form input:focus {
+      border-color: var(--sky);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #04111a;
+      padding: 4rem 8rem 2rem;
+      border-top: 1px solid rgba(126, 200, 227, 0.1);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span {
+      color: var(--sky);
+    }
+
+    .footer-desc {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.45);
+      max-width: 280px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-col ul a {
+      text-decoration: none;
+      color: rgba(245, 240, 232, 0.5);
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--cream);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 240, 232, 0.08);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.3);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes shimmer {
+      from {
+        opacity: 0.8;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes glint {
+      0% {
+        transform: rotate(15deg) translateX(-200%);
+      }
+
+      100% {
+        transform: rotate(15deg) translateX(400%);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      nav {
+        padding: 1.5rem 2rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left {
+        padding: 8rem 2rem 4rem;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .stats-bar {
+        padding: 3rem 2rem;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services,
+      .process,
+      .why,
+      .testimonials,
+      .cta-section {
+        padding: 5rem 2rem;
+      }
+
+      .services-grid,
+      .process-steps,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why {
+        grid-template-columns: 1fr;
+      }
+
+      .why-visual {
+        display: none;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      footer {
+        padding: 3rem 2rem 2rem;
+      }
+
+      .step:not(:last-child)::after {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Clear<span>View</span></div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">Why Us</a></li>
+      <li><a href="#cta" class="nav-cta">Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Premium Window Installation</p>
+      <h1>Let the Light <em>In.</em></h1>
+      <p class="hero-sub">Expert window installation that transforms your home. Energy-efficient, beautifully crafted,
+        and installed with precision craftsmanship by certified professionals.</p>
+      <div class="btn-group">
+        <a href="#cta" class="btn-primary">Get Free Estimate</a>
+        <a href="#process" class="btn-secondary">How It Works</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="window-frame">
+        <div class="outer-frame">
+          <div class="pane-grid">
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+          </div>
+        </div>
+        <div class="window-sill"></div>
+      </div>
+      <div class="stat-badge badge-1">
+        <div class="num">40%</div>
+        <div class="label">Energy Savings</div>
+      </div>
+      <div class="stat-badge badge-2">
+        <div class="num">4.9★</div>
+        <div class="label">Customer Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="big">12K+</div>
+      <p>Windows Installed</p>
+    </div>
+    <div class="stat-item">
+      <div class="big">18yr</div>
+      <p>Industry Experience</p>
+    </div>
+    <div class="stat-item">
+      <div class="big">100%</div>
+      <p>Licensed & Insured</p>
+    </div>
+    <div class="stat-item">
+      <div class="big">Lifetime</div>
+      <p>Warranty Offered</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header">
+      <p class="eyebrow">What We Do</p>
+      <h2>Every Window, <em>Done Right</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="8" width="40" height="40" stroke="#7ec8e3" stroke-width="2.5" />
+            <line x1="28" y1="8" x2="28" y2="48" stroke="#7ec8e3" stroke-width="2" />
+            <line x1="8" y1="28" x2="48" y2="28" stroke="#7ec8e3" stroke-width="2" />
+          </svg>
+        </div>
+        <h3>New Construction</h3>
+        <p>Full window installation for new builds. We work directly with builders and contractors from framing through
+          final finish.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none">
+            <rect x="4" y="12" width="48" height="34" stroke="#c9a96e" stroke-width="2.5" />
+            <path d="M4 46L14 36" stroke="#c9a96e" stroke-width="2" />
+            <path d="M52 46L42 36" stroke="#c9a96e" stroke-width="2" />
+            <path d="M20 12 L20 46" stroke="#c9a96e" stroke-width="2" />
+            <path d="M36 12 L36 46" stroke="#c9a96e" stroke-width="2" />
+          </svg>
+        </div>
+        <h3>Window Replacement</h3>
+        <p>Remove your old, drafty windows and replace them with modern, high-performance units that slash energy bills.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none">
+            <rect x="8" y="8" width="40" height="40" stroke="#7ec8e3" stroke-width="2.5" />
+            <path d="M8 8 L48 48" stroke="#7ec8e3" stroke-width="1.5" stroke-dasharray="4 3" />
+            <circle cx="28" cy="28" r="8" stroke="#7ec8e3" stroke-width="2" />
+          </svg>
+        </div>
+        <h3>Bay & Bow Windows</h3>
+        <p>Expand your view and your living space with stunning bay and bow window installations that add architectural
+          elegance.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none">
+            <rect x="16" y="8" width="24" height="36" stroke="#c9a96e" stroke-width="2.5" />
+            <path d="M16 26 L40 26" stroke="#c9a96e" stroke-width="2" />
+            <ellipse cx="28" cy="48" rx="12" ry="4" stroke="#c9a96e" stroke-width="1.5" />
+          </svg>
+        </div>
+        <h3>Egress Windows</h3>
+        <p>Code-compliant egress window installation for basements and below-grade rooms for safety and natural light.
+        </p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none">
+            <path d="M8 48 L28 8 L48 48 Z" stroke="#7ec8e3" stroke-width="2.5" fill="none" />
+            <line x1="18" y1="30" x2="38" y2="30" stroke="#7ec8e3" stroke-width="2" />
+          </svg>
+        </div>
+        <h3>Skylight Installation</h3>
+        <p>Flood interiors with natural light from above. We install all types of fixed, ventilated, and solar-powered
+          skylights.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 56 56" fill="none">
+            <path d="M8 8 H48 V36 H8 Z" stroke="#c9a96e" stroke-width="2.5" />
+            <path d="M20 36 V52 M36 36 V52" stroke="#c9a96e" stroke-width="2" />
+            <path d="M12 52 H44" stroke="#c9a96e" stroke-width="2" />
+            <line x1="8" y1="22" x2="48" y2="22" stroke="#c9a96e" stroke-width="2" />
+            <line x1="28" y1="8" x2="28" y2="36" stroke="#c9a96e" stroke-width="2" />
+          </svg>
+        </div>
+        <h3>Commercial Glass</h3>
+        <p>Large-format commercial window systems, storefronts, curtain walls, and glass facades for commercial
+          properties.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="section-header">
+      <p class="eyebrow">How It Works</p>
+      <h2>Simple, <em>Seamless</em> Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Free Consultation</h4>
+        <p>We visit your home, assess your needs, take precise measurements, and walk you through all available options
+          and pricing.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Custom Quote</h4>
+        <p>Receive a detailed, itemized quote within 24 hours. No hidden fees, no surprises — just transparent pricing
+          you can trust.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Professional Install</h4>
+        <p>Our certified installers arrive on time, protect your home, and complete the job with clean, precision
+          craftsmanship.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Final Inspection</h4>
+        <p>We walk through every window with you before we leave. Not done until you're 100% satisfied — guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="about">
+    <div class="why-visual">
+      <div class="why-window ww1"></div>
+      <div class="why-window ww2"></div>
+      <div class="why-window ww3"></div>
+      <div class="overlap-badge">Certified Installers Since 2006</div>
+    </div>
+    <div class="why-content">
+      <p class="eyebrow">Why ClearView</p>
+      <h2>Built on <em>Trust</em> and Transparency</h2>
+      <ul class="feature-list">
+        <li>
+          <div class="check">✓</div>
+          <div>
+            <strong>Lifetime Workmanship Warranty</strong>
+            <span>We stand behind every installation. If something isn't right, we make it right — no questions
+              asked.</span>
+          </div>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <div>
+            <strong>Energy Star Certified Products</strong>
+            <span>All windows we install are Energy Star certified, helping you save up to 40% on heating and cooling
+              costs.</span>
+          </div>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <div>
+            <strong>Same-Day Emergency Service</strong>
+            <span>Broken window? Storm damage? We offer rapid-response same-day service for emergency situations.</span>
+          </div>
+        </li>
+        <li>
+          <div class="check">✓</div>
+          <div>
+            <strong>Financing Available</strong>
+            <span>0% interest financing for 18 months. Upgrade your home today without the financial stress.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header">
+      <p class="eyebrow">What Clients Say</p>
+      <h2>Real Homes, <em>Real Results</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"The crew was incredible — on time, clean, and the windows look absolutely stunning. Our heating
+          bill dropped dramatically the very next month."</blockquote>
+        <div class="reviewer">
+          <div class="avatar">MH</div>
+          <div class="reviewer-info">
+            <strong>Margaret H.</strong>
+            <small>Homeowner · Atlanta, GA</small>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"I've used three window companies over the years. ClearView is in a different league entirely.
+          Professional from quote to final walkthrough."</blockquote>
+        <div class="reviewer">
+          <div class="avatar">RD</div>
+          <div class="reviewer-info">
+            <strong>Robert D.</strong>
+            <small>Property Manager · Nashville, TN</small>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>"They installed 14 windows in one day without a single issue. The house is so much quieter now and
+          the quality of light inside has completely changed."</blockquote>
+        <div class="reviewer">
+          <div class="avatar">SC</div>
+          <div class="reviewer-info">
+            <strong>Sarah C.</strong>
+            <small>Homeowner · Birmingham, AL</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <h2>Ready for a <em>Brighter</em> Home?</h2>
+    <p>Get your free, no-obligation estimate today. Our team will reach out within one business day.</p>
+    <div class="cta-form">
+      <input type="email" placeholder="Enter your email address">
+      <a href="#" class="btn-primary">Get Free Quote</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Clear<span>View</span></div>
+        <p class="footer-desc">Premium window installation since 2006. Serving residential and commercial clients across
+          the Southeast.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">New Construction</a></li>
+          <li><a href="#">Window Replacement</a></li>
+          <li><a href="#">Bay & Bow Windows</a></li>
+          <li><a href="#">Skylights</a></li>
+          <li><a href="#">Commercial Glass</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#">(555) 123-4567</a></li>
+          <li><a href="#">info@clearviewwindows.com</a></li>
+          <li><a href="#">Service Areas</a></li>
+          <li><a href="#">Financing</a></li>
+          <li><a href="#">Warranty</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ClearView Window Installation. All rights reserved.</p>
+      <p>Licensed · Insured · Certified</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
